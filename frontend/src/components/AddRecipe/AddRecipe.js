@@ -5,8 +5,6 @@ import Header from '../Header/Header'
 import { MdClose } from "react-icons/md"
 import axios from 'axios'
 import { useParams } from 'react-router-dom';
-
-
 const BACKEND_BASE_URL = 'http://localhost:4000';
 
 export default function AddRecipe({user, setUser, isEdit}) {
@@ -16,20 +14,14 @@ export default function AddRecipe({user, setUser, isEdit}) {
         description: "",
         steps: "",
     })
-    const [recipe, setRecipe] = useState()
+    // get recipe if isEdit==true
     useEffect(() => {
         async function fetchRecipe() {
             try {
                 let recipeObj = await axios.get(BACKEND_BASE_URL + `/recipe/${id}`)
                 recipeObj = recipeObj.data
-                setRecipe(recipeObj)
-                let tagList = [];
-                const ingredients = recipeObj.ingredients;
-                for(let i = 0; i < ingredients.length; i++) {
-                    tagList.push({name: ingredients[i].id.name})
-                }
                 setUserInput({itemName: recipeObj.itemName, description: recipeObj.description, steps: recipeObj.steps})
-                setTagList(tagList)
+                setTagList(recipeObj.ingredients)
             } catch(error) {
                 console.log(error)
             }
@@ -45,23 +37,19 @@ export default function AddRecipe({user, setUser, isEdit}) {
     };
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
-
-        // send recipe to backend
         try{
             if(isEdit) {
-                const response = await axios.post(BACKEND_BASE_URL + '/recipe/update-recipe', {
-                    recipe: recipe,
+                const response = await axios.post(BACKEND_BASE_URL + '/recipe/update', {
+                    recipeId: id,
                     itemName: userInput.itemName,
                     description: userInput.description,
                     ingredients: tagList,
                     steps: userInput.steps,
-                    user: JSON.parse(localStorage.getItem("user"))
                 })
                 alert(response.data)
             }
             else {
-                const response = await axios.post(BACKEND_BASE_URL + '/recipe/add-recipe', {
+                const response = await axios.post(BACKEND_BASE_URL + '/recipe/add', {
                     itemName: userInput.itemName,
                     description: userInput.description,
                     ingredients: tagList,
@@ -104,7 +92,7 @@ export default function AddRecipe({user, setUser, isEdit}) {
         setTagList([...tagList.filter(tag => tagList.indexOf(tag) !== index)]);
     };
 
-
+    const [selectedFile, setSelectedFile] = useState();
     return (
         <>
         <div className="overlay-add-recipe"></div>
@@ -112,13 +100,13 @@ export default function AddRecipe({user, setUser, isEdit}) {
             <Header user={user} setUser={setUser}/>
             <div className="add-recipe-container">
                 <div className="recipe-book-container">
-                    <form onSubmit={handleSubmit}>
                         <div className="page-1">
                             <div className="heading mb-4">
                                 New Recipe
                             </div>
                             <div className="item-image mb-3">
-
+                                <input type="file" onChange={(e) => setSelectedFile(e.target.files[0])} accept=".png,.jpg,.jpeg"/>
+                                {/* <FileUploaded onFileSelectSuccess={(file) => setSelectedFile(file)} onFileSelectError={({ error }) => alert(error)} /> */}
                             </div>
                             
                             <input type="text" className="recipe-book-input mb-3" placeholder="Enter Item Name..." name="itemName" value={userInput.itemName} onChange={handleChange} required/>
@@ -160,13 +148,12 @@ export default function AddRecipe({user, setUser, isEdit}) {
                             </div>
                             <div className="ingredient-title mb-2">Steps</div>
                             <textarea rows="7" className="recipe-book-input" placeholder="Enter steps to cook..." name="steps" value={userInput.steps} onChange={handleChange} required/>
-                            {   isEdit ?
-                                <a href="/"><input type="submit" className="btn btn-success" value="Add My Recipe"></input></a>
+                            {   !isEdit ?
+                                <a href="/"><button className="btn btn-success" onClick={handleSubmit}>Add My Recipe</button></a>
                                 :
-                                <a href="/"><input type="submit" className="btn btn-success" value="Update My Recipe"></input></a>
+                                <a href="/"><button className="btn btn-success" onClick={handleSubmit}>Update My Recipe</button></a>
                             }
                         </div>
-                    </form>
                 </div>
             </div>
         </div>

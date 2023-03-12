@@ -14,10 +14,8 @@ let recipeSchema = new Schema({
         type: String,
     },
     ingredients: [{
-        id: {
-            type: mongoose.Schema.Types.ObjectId,
-            default: null,
-            ref: "Ingredient"
+        name: {
+            type: String,
         },
         quantity: {
             type: Number,

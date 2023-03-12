@@ -13,27 +13,19 @@ export default function SearchBar({searchList, setMatchedRecipes}) {
     if(e.key === "Enter") {
         try {
             setInputValue('')
-            let matchedRecipeObj = await axios.get(BACKEND_BASE_URL + '/recipe/pattern', {
+            let matchedRecipeObj = await axios.get(BACKEND_BASE_URL + '/recipe/search', {
                 params: {
                     itemName: inputValue
                 }
             })
             matchedRecipeObj = matchedRecipeObj.data
-
-            let matchedRecipeHavingIngredientObj = await axios.get(BACKEND_BASE_URL + '/ingredient/pattern', {
-                params: {
-                    itemName: inputValue
-                }
-            })
-            matchedRecipeHavingIngredientObj = matchedRecipeHavingIngredientObj.data
-            matchedRecipeObj = matchedRecipeObj.concat(matchedRecipeHavingIngredientObj)
             // remove duplicates
-            matchedRecipeObj = matchedRecipeObj.filter((value, index) => {
-              const _value = JSON.stringify(value);
-              return index === matchedRecipeObj.findIndex(obj => {
-                return JSON.stringify(obj) === _value;
-              });
-            });
+            // matchedRecipeObj = matchedRecipeObj.filter((value, index) => {
+            //   const _value = JSON.stringify(value);
+            //   return index === matchedRecipeObj.findIndex(obj => {
+            //     return JSON.stringify(obj) === _value;
+            //   });
+            // });
             if(!matchedRecipeObj || matchedRecipeObj.length === 0) alert('No results found')
             setMatchedRecipes(matchedRecipeObj)
         } catch(error) {
