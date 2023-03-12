@@ -1,0 +1,28 @@
+#search-results {
+    background: white;
+}
+
+.result-container {
+padding: 2rem 3rem;
+}
+
+.result-container > .title {
+font-size: 7vh;
+text-align: center;
+margin-bottom: 1rem;
+}
+
+.result-container .result-list-container {
+
+}
+.result-container .result-list-row {
+display: flex;
+flex-wrap: wrap;
+justify-content: space-around;
+align-items: center;
+margin-bottom: 3rem;
+}
+
+.card-shadow {
+box-shadow: 5px 5px 10px #888;
+}

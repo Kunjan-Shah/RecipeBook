@@ -1,0 +1,126 @@
+.overlay-add-recipe {
+    min-height:100vh;
+    min-width: 100vw;
+    background:linear-gradient(0deg, rgba(2, 25, 51, 0), rgba(2, 25, 51, 0)), url('../../img/add-recipe-bg.png');
+    position: fixed;
+    background-attachment: fixed;
+}
+
+.add-recipe-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.recipe-book-container {
+    background-image: url('../../img/recipe-book.png');
+    height: 85vh;
+    width: 60vw;
+    background-size: cover;
+    position: relative;
+}
+
+.recipe-book-container .page-1 {
+    position: absolute;
+    height: 77vh;
+    width: 26vw;
+    top: 1vh;
+    left: 4vw;
+    padding: 1rem 1rem;
+}
+
+.recipe-book-container .page-1 .heading {
+    color: red;
+    font-family: cursive;
+    font-size: 2rem;
+    font-style: italic;
+    text-decoration: underline;
+    text-align: center;
+}
+
+.recipe-book-container .page-1 .item-image {
+    background: lightgray;
+    height: 12em;
+    width: 17em;
+    margin: 0 auto;
+}
+
+.recipe-book-container .recipe-book-input {
+    outline: 0;
+    width: 100%;
+ }
+
+.recipe-book-container .page-2 {
+    position: absolute;
+    height: 77vh;
+    width: 26vw;
+    top: 1vh;
+    left: 30vw;
+    padding: 1rem 1rem;
+}
+
+.recipe-book-container .page-2 .ingredient-title {
+    font-size: 1.3rem;
+}
+
+.recipe-book-container .page-2 .ingredient-input {
+    width: 100%;
+    display: flex;
+    height: 2rem;
+    border: 1px solid;
+}
+.recipe-book-container .page-2 .ingredient-input input, .recipe-book-container .page-2 .ingredient-input select {
+    outline: 0;
+    border: none;
+    
+}
+
+.recipe-book-container .page-2 .ingredient-input .name {
+    width: 50%;
+    border-right: 1px solid lightgray;
+    padding-left: 0.5rem;
+}
+
+.recipe-book-container .page-2 .ingredient-input .quantity {
+    width: 20%;
+    border-right: 1px solid lightgray;
+}
+
+.recipe-book-container .page-2 .ingredient-input .measure {
+
+}
+
+.recipe-book-container .page-2 .final-ingredient-taglist {
+    background: white;
+    border: 1px solid black;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: scroll;
+    padding: 0.5rem;
+    font-size: 0.7rem;
+    max-height: 19vh;
+}
+
+.recipe-book-container .page-2 .final-ingredient-taglist .single-tag {
+    display: flex;
+    align-items: center;
+    padding: 0 0.5em;
+    border: 1.5px solid #764abc;
+    border-radius: 5px;
+    color: #764abc;
+    width: fit-content;
+    height: fit-content;
+    margin: 0 0.5em 0.5em 0;
+}
+
+.recipe-book-container .page-2 .final-ingredient-taglist .single-tag i {
+    display: flex;
+    padding: 0 0 0 0.2em;
+    border: none;
+    background-color: unset;
+    cursor: pointer;
+    color: #764abc;
+    
+}
+
+

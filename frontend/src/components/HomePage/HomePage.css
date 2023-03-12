@@ -1,0 +1,65 @@
+.overlay-mainpage {
+    min-height:100vh;
+    min-width: 100vw;
+    background:linear-gradient(0deg, rgba(2, 25, 51, 0.5), rgba(2, 25, 51, 0.5)), url('../../img/main-bg.jpg');
+    background-size:cover;
+    filter: blur(5px);
+  -webkit-filter: blur(5px);
+  position: absolute;
+  background-attachment: fixed;
+}
+
+.homepage-container {
+    display: flex;
+  }
+  
+  .searchbar-container {
+    width: 60%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .carousel-container {
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-flow: column;
+  }
+  
+  .carousel-control-prev {
+    left: -5rem !important;
+  }
+  .carousel-control-next {
+    right: -5rem !important;
+  }
+  
+  .carousel-title {
+    color: white;
+    font-size: 2.5rem;
+  }
+  
+  .search-title {
+    color: white;
+    font-size: 3.5rem;
+  }
+  .add-recipe-btn {
+    border: 2px solid white;
+    color: white;
+    width: 15rem;
+    height: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 6rem;
+  }
+  
+  .add-recipe-btn:hover {
+    color: black;
+    background-color: white;
+  }

@@ -1,0 +1,45 @@
+a {
+  text-decoration: none;
+  color: inherit;
+}
+a:hover {
+  text-decoration: none;
+  color: inherit;
+}
+.logo img{
+    height: 8vh;
+  
+  }
+  
+  #header {
+    display: flex;
+    padding: 1rem 1.5rem;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  #header .user-pic {
+    cursor: pointer;
+  }
+  
+  #header > .menu {
+    background: white;
+    padding: 0.5rem;
+    font-size: 1.2rem;
+    position: absolute;
+    right: 1.5rem;
+    top: 4.5rem;
+    border-radius: 10px;
+    z-index: 999999;
+  }
+  
+  #header > .menu .option {
+    margin: 0.5rem;
+    border-radius: 5px;
+    padding: 0.5rem;
+  }
+  
+  #header > .menu .option:hover {
+    background: blue;
+    color: white;
+  }

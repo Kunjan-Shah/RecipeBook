@@ -1,0 +1,133 @@
+.overlay-recipe {
+    min-height:100vh;
+    min-width: 100vw;
+    background:linear-gradient(0deg, rgba(2, 25, 51, 0), rgba(2, 25, 51, 0)), url('../../img/recipe-bg.jpg');
+    background-size:cover;
+    filter: blur(3px);
+    -webkit-filter: blur(3px);
+    position: absolute;
+    background-attachment: fixed;
+  
+  }
+
+  .recipe-landing-page {
+    height: 100vh;
+  }
+
+  .recipe-banner-container {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .recipe-banner-container .item-image {
+    height: 50vh;
+    width: 35vw;
+    border-radius: 100%;
+    margin-bottom: 2rem;
+  }
+  
+  .recipe-banner-container .item-image img {
+    width: 35vw;
+    height: 50vh;
+    border-radius: 100%;
+  }
+  
+  .recipe-banner-container .recipe-title {
+    font-size: 4rem;
+  }
+
+.method-container {
+    display: flex;
+    padding: 1rem 2rem;
+}
+
+.method-container .left-box {
+    height: 100%;
+    width: 60%;
+}
+
+.method-container .ingredient-box {
+    height: 100%;
+    width: 40%;
+    padding: 0 3rem;
+}
+
+.method-container .left-box .description {
+    background: rgba(208, 226, 255, 0.54);
+    padding: 1rem;
+    border-radius: 10px;
+}
+.method-container .left-box .description .text {
+  margin-bottom: 1rem;
+  font-style: italic;
+  font-family: system-ui;;
+}
+
+.method-container .left-box .description .author {
+    display: flex;
+    align-items: center;
+}   
+
+.method-container .left-box .rate {
+  font-size: 1.2rem;
+  display: flex;
+}
+
+.method-container .left-box .rate .material-icons {
+  color: rgb(255, 217, 0);
+  cursor: pointer;
+}
+
+.method-container .left-box .rate .material-symbols-outlined {
+  cursor: pointer;
+}
+
+.method-container .left-box .steps {
+
+}
+
+.method-container .left-box .steps .title {
+  font-size: 1.5rem;
+}
+
+.method-container .left-box .steps .text {
+
+}
+
+.ingredient-content-box {
+  border: 5px solid rgba(208, 226, 255, 0.54);
+  border-radius: 10px;
+}
+
+.ingredient-content-box .heading {
+  background: rgba(208, 226, 255, 0.54);
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.ingredient-content-box .ingredient-list {
+  padding: 0.5rem;
+}
+
+.ingredient-content-box .ingredient-list span{
+  color: blue;
+  font-weight: bold;
+}
+
+.ingredient-content-box .ingredient-list .ingredient-item {
+  display: flex;
+}
+
+.ingredient-content-box .ingredient-list .ingredient-item .item-name{
+  display: flex;
+  width: 75%;
+}
+
+.admin-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
