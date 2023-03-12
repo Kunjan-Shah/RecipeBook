@@ -15,13 +15,7 @@ export default function HomePage({user, setUser}) {
     useEffect(() => {
         async function fetchAllIngredients() {
             try {
-                let ingredientsObj = await axios.get(BACKEND_BASE_URL + "/ingredient/all")
-                ingredientsObj = ingredientsObj.data
                 let masterSearchList = []
-                for(let i = 0; i < ingredientsObj.length; i++) {
-                    masterSearchList.push(ingredientsObj[i].name)
-                }
-
                 let recipesObj = await axios.get(BACKEND_BASE_URL + "/recipe/all")
                 recipesObj = recipesObj.data
                 for(let i = 0; i < recipesObj.length; i++) {

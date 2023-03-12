@@ -9,7 +9,7 @@ const BACKEND_BASE_URL = 'http://localhost:4000';
 
 
 export default function MyRecipe({user, setUser}) {
-    const [myRecipes, setMyRecipes] = useState([])
+    const [myRecipes, setMyRecipes] = useState()
     useEffect(() => {
         async function fetchData() {
             try {
@@ -28,6 +28,7 @@ export default function MyRecipe({user, setUser}) {
     }, [user])
     
     return (
+        myRecipes ?
         <>
         <div className="overlay-myrecipe"></div>
         <div className="main-page">
@@ -59,5 +60,7 @@ export default function MyRecipe({user, setUser}) {
             </div>
         </div>
         </>
+        :
+        "Loading..."
     )
 }

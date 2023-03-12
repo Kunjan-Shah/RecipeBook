@@ -150,7 +150,7 @@ export default function Recipe({user, setUser}) {
                                 recipe.ingredients.map((item, index) => (
                                     <div className="ingredient-item">
                                         <div className="item-name">
-                                            <span className="material-symbols-outlined mr-1">check</span> <div>{capitalizeFirstLetter(item.id.name)}</div>
+                                            <span className="material-symbols-outlined mr-1">check</span> <div>{capitalizeFirstLetter(item.name)}</div>
                                         </div>
                                         <div className="quantity">
                                             {(item.quantity === 0 ? "" : item.quantity) + " " + item.measure}

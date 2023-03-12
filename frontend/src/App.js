@@ -23,6 +23,7 @@ function App() {
       <div className="App">
         <Routes>
           <Route path="/" element={user ? <HomePage user={user} setUser={setUser} /> : <Navigate to="/login" />} />
+          {/* <Route path="/" element={user ? <AddRecipe user={user} setUser={setUser} isEdit={false}/> : <Navigate to="/login" />} /> */}
           <Route path="/my-recipes" element={user ? <MyRecipe user={user} setUser={setUser} /> : <Navigate to="/login" />} />
           <Route path="/recipe/:id" element={user ? <Recipe user={user} setUser={setUser} /> : <Navigate to="/login" />} />
           <Route path="/add-recipe" element={user ? <AddRecipe user={user} setUser={setUser} isEdit={false}/> : <Navigate to="/login" />} />

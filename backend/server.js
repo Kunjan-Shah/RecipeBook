@@ -6,10 +6,10 @@ const http = require('http')
 const app = express()
 const server = http.createServer(app)
 const cors = require('cors');
+const axios = require('axios')
 
 const userRouter = require("./routes/user");
 const recipeRouter = require("./routes/recipe");
-const ingredientRouter = require("./routes/ingredient");
 
 require("./mongo-connect")
 
@@ -19,8 +19,6 @@ app.use(express.json());
 
 app.use("/users", userRouter);
 app.use("/recipe", recipeRouter);
-app.use("/ingredient", ingredientRouter);
-
 
 server.listen(PORT, function () {
     console.log("Server is running on Port: " + PORT);
