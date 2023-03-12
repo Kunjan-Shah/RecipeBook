@@ -16,3 +16,11 @@ cd backend
 npm i
 node server.js
 ```
+## Website walkthrough
+![Walkthrough](https://github.com/Kunjan-Shah/RecipeBook/blob/master/website_walkthrough.gif)
+
+Note: GIF might be blurred
+
+Future development:
+1. Support image upload
+2. Improve UI/UX
