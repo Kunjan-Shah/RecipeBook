@@ -1,21 +1,24 @@
 const express = require("express");
 const recipeRouter = express.Router();
 const Recipe = require("../models/recipe");
+const axios = require("axios")
 
 // create recipe
 recipeRouter.post("/add", async (req, res) => {
     const user = req.body.user;
     // upload image
-    // const res = await axios.post(`https://freeimage.host/api/1/upload?key=${process.env.IMAGE_HOST_API_KEY}&action=upload&source=${req.body.imageUrl}`)
-    // if(res.statusCode !== 200) throw "Error uploading image " + res.data
-    // const imageUrl = res.data.image.url
-    const recipe = new Recipe({
+    // console.log("uploading image")
+    // const imageUploadResponse = await axios.post(`https://freeimage.host/api/1/upload?key=${process.env.IMAGE_HOST_API_KEY}&action=upload&source=${req.body.imageUrl}`)
+    // console.log(imageUploadResponse)
+    // if(imageUploadResponse.statusCode !== 200) throw "Error uploading image " + imageUploadResponse.data
+    // const imageUrl = imageUploadResponse.data.image.url
+    let recipe = new Recipe({
         itemName: req.body.itemName,
         description: req.body.description,
         ingredients: req.body.ingredients,
         steps: req.body.steps,
         author: user._id,
-        // imageUrl: imageUrl
+        imageUrl: req.body.imageUrl
     })
     try {
         await recipe.save();
@@ -34,6 +37,7 @@ recipeRouter.post("/update", async (req, res) => {
             description: req.body.description,
             ingredients: req.body.ingredients,
             steps: req.body.steps,
+            imageUrl: req.body.imageUrl
         })
         res.status(200).send("Recipe updated successfully");
     } catch (error) {

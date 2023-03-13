@@ -39,10 +39,52 @@
 }
 
 .recipe-book-container .page-1 .item-image {
-    background: lightgray;
     height: 12em;
     width: 17em;
     margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+}
+
+.recipe-book-container .page-1 .white-bg {
+    background: white;
+}
+
+.recipe-book-container .page-1 .item-image .img-tag {
+    height: 100%;
+    width: 100%;
+    border-radius: 100%;
+}
+
+.recipe-book-container .page-1 .item-image:hover .img-tag{
+    display: none;
+}
+.recipe-book-container .page-1 .item-image .upload-again {
+    display: none;
+}
+.recipe-book-container .page-1 .item-image:hover .upload-again{
+    display: block;
+    background-color: white;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+}
+
+.recipe-book-container .page-1 .item-image .upload-label {
+    background: blue;
+    color: white;
+    border-radius: 5px;
+    padding: 0.5rem;
+    cursor: pointer;
+}
+
+input[type="file"] {
+    display: none;
 }
 
 .recipe-book-container .recipe-book-input {

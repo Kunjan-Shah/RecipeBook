@@ -1,17 +1,33 @@
 import React,{useState, useEffect} from 'react'
-import './AddRecipe.css'
+import '../AddRecipe/AddRecipe.css'
 import '../../pages/MainPage.css'
 import Header from '../Header/Header'
 import { MdClose } from "react-icons/md"
 import axios from 'axios'
+import { useParams } from 'react-router-dom';
 const BACKEND_BASE_URL = 'http://localhost:4000';
 
-export default function AddRecipe({user, setUser}) {
+export default function EditRecipe({user, setUser}) {
+    const {id} = useParams();
     const [userInput, setUserInput] = useState({
         itemName: "",
         description: "",
         steps: "",
     })
+    useEffect(() => {
+        async function fetchRecipe() {
+            try {
+                let recipeObj = await axios.get(BACKEND_BASE_URL + `/recipe/${id}`)
+                recipeObj = recipeObj.data
+                setUserInput({itemName: recipeObj.itemName, description: recipeObj.description, steps: recipeObj.steps})
+                setTagList(recipeObj.ingredients)
+                setImageSrc(recipeObj.imageUrl)
+            } catch(error) {
+                console.log(error)
+            }
+        }
+        fetchRecipe()
+    }, [])
 
     const handleChange = (e) => {
         setUserInput({
@@ -22,13 +38,13 @@ export default function AddRecipe({user, setUser}) {
 
     const handleSubmit = async (e) => {
         try{
-            const response = await axios.post(BACKEND_BASE_URL + '/recipe/add', {
+            const response = await axios.post(BACKEND_BASE_URL + '/recipe/update', {
+                recipeId: id,
                 imageUrl: imageSrc,
                 itemName: userInput.itemName,
                 description: userInput.description,
                 ingredients: tagList,
                 steps: userInput.steps,
-                user: JSON.parse(localStorage.getItem("user"))
             })
             alert(response.data)
         } catch(error) {
@@ -98,6 +114,7 @@ export default function AddRecipe({user, setUser}) {
                                             <input type="file" onChange={uploadImage} accept=".png,.jpg,.jpeg"/>
                                             Re-upload item image
                                         </label>
+                                        <p>Image must be less than 200 KB</p>
                                     </div>
                                 </div>
                                 :
@@ -148,7 +165,7 @@ export default function AddRecipe({user, setUser}) {
                             </div>
                             <div className="ingredient-title mb-2">Steps</div>
                             <textarea rows="7" className="recipe-book-input" placeholder="Enter steps to cook..." name="steps" value={userInput.steps} onChange={handleChange} required/>
-                            <a href="/"><button className="btn btn-success" onClick={handleSubmit}>Add My Recipe</button></a>
+                            <a href="/"><button className="btn btn-success" onClick={handleSubmit}>Update My Recipe</button></a>
                         </div>
                 </div>
             </div>
