@@ -31,7 +31,7 @@ export default function AddRecipe({user, setUser}) {
             })
             alert(response.data)
         } catch(error) {
-            console.err(error)
+            console.log(error)
         }
     };
     const [tag, setTag] = useState({

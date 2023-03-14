@@ -8,5 +8,5 @@ try {
     })
 } catch(error) {
     console.log("Error connecting to MongoDB...")
-    console.err(error)
+    console.log(error)
 }

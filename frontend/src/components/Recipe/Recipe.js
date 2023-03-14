@@ -24,7 +24,7 @@ export default function Recipe({user, setUser}) {
                 recipeObj = recipeObj.data
                 setRecipe(recipeObj)
             } catch(error) {
-                console.err(error)
+                console.log(error)
             }
         }
       fetchRecipe()
@@ -41,7 +41,7 @@ export default function Recipe({user, setUser}) {
                 recipeId: recipe._id
             })
         } catch(error) {
-            console.err(error)
+            console.log(error)
         }
     }
 
@@ -77,7 +77,7 @@ export default function Recipe({user, setUser}) {
                 id: recipe._id
             })
         } catch(error) {
-            console.err(error)
+            console.log(error)
         }
     }
     

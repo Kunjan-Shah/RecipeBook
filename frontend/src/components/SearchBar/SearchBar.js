@@ -27,7 +27,7 @@ export default function SearchBar({searchList, setMatchedRecipes}) {
             if(!matchedRecipeObj || matchedRecipeObj.length === 0) alert('No results found')
             setMatchedRecipes(matchedRecipeObj)
         } catch(error) {
-            console.err(error);
+            console.log(error);
         }
     }
   };

@@ -16,7 +16,7 @@ export default function RecipeCarousel() {
                 recipesObj = recipesObj.slice(0, 3)
                 setRecipeList(recipesObj)
             } catch(error) {
-                console.err(error)
+                console.log(error)
             }
         }
         fetchTopRecipes()

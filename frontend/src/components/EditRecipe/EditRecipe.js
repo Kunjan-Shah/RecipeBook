@@ -23,7 +23,7 @@ export default function EditRecipe({user, setUser}) {
                 setTagList(recipeObj.ingredients)
                 setImageSrc(recipeObj.imageUrl)
             } catch(error) {
-                console.err(error)
+                console.log(error)
             }
         }
         fetchRecipe()
@@ -48,7 +48,7 @@ export default function EditRecipe({user, setUser}) {
             })
             alert(response.data)
         } catch(error) {
-            console.err(error)
+            console.log(error)
         }
     };
     const [tag, setTag] = useState({

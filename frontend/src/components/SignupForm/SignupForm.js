@@ -40,7 +40,7 @@ export default function SignupForm({setUser}) {
                     localStorage.setItem('user', JSON.stringify(response.data))
                 }
             } catch(error) {
-                console.err(error);
+                console.log(error);
             }
         }
     };

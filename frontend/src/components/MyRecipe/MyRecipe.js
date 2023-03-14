@@ -21,7 +21,7 @@ export default function MyRecipe({user, setUser}) {
                 myRecipesObj = myRecipesObj.data
                 setMyRecipes(myRecipesObj)
             } catch(error) {
-                console.err(error)
+                console.log(error)
             }
         }
         fetchData()

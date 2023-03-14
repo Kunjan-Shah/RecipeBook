@@ -23,7 +23,7 @@ export default function HomePage({user, setUser}) {
                 }
                 setSearchList(masterSearchList)
             } catch(error) {
-                console.err(error)
+                console.log(error)
             }
         }
         fetchAllIngredients()

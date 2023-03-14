@@ -22,9 +22,10 @@ recipeRouter.post("/add", async (req, res) => {
     })
     try {
         await recipe.save();
+        console.log(recipe)
         res.status(201).send("Recipe added successfully");
     } catch (error) {
-        console.err(error)
+        console.log(error)
         res.status(500).send(error)
     }
 })
@@ -41,7 +42,7 @@ recipeRouter.post("/update", async (req, res) => {
         })
         res.status(200).send("Recipe updated successfully");
     } catch (error) {
-        console.err(error)
+        console.log(error)
         res.status(500).send(error)
     }
 })
@@ -64,7 +65,7 @@ recipeRouter.post("/update-votes", async (req, res) => {
         }
         res.status(200).send("Votes updated");
     } catch (error) {
-        console.err(error)
+        console.log(error)
         res.status(500).send(error)
     }
 })
@@ -76,7 +77,7 @@ recipeRouter.get("/my-recipes", async (req, res) => {
         let myRecipes = await Recipe.find({author: user._id})
         res.status(200).send(myRecipes);
     } catch(error) {
-        console.err(error)
+        console.log(error)
         res.status(500).send(error)
     }
 })
@@ -88,7 +89,7 @@ recipeRouter.get("/all", async (req, res) => {
         const allRecipes = await Recipe.find({})
         res.status(200).send(allRecipes);
     } catch (error) {
-        console.err(error)
+        console.log(error)
         res.status(500).send(error)
     }
 })
@@ -99,7 +100,7 @@ recipeRouter.get("/top", async (req, res) => {
         const allRecipes = await Recipe.find({}).sort({upvotes: 'desc'})
         res.status(200).send(allRecipes);
     } catch (error) {
-        console.err(error)
+        console.log(error)
         res.status(500).send(error)
     }
 })
@@ -111,7 +112,7 @@ recipeRouter.get("/search", async (req, res) => {
         const matchingRecipes = await Recipe.find({ itemName: { $regex: reg, $options: "i" } })
         res.status(200).send(matchingRecipes);
     } catch (error) {
-        console.err(error)
+        console.log(error)
         res.status(500).send(error)
     }
 })
@@ -122,7 +123,7 @@ recipeRouter.get("/:id", async (req, res) => {
         let recipe = await Recipe.findOne({_id: req.params.id})
         res.status(200).send(recipe);
     } catch(error) {
-        console.err(error)
+        console.log(error)
         res.status(500).send(error)
     }
 })
@@ -133,7 +134,7 @@ recipeRouter.post("/delete", async (req, res) => {
         await Recipe.findByIdAndDelete({_id: req.body.id})
         res.status(200).send("Recipe deleted successfully");
     } catch(error) {
-        console.err(error)
+        console.log(error)
         res.status(500).send(error)
     }
 })
