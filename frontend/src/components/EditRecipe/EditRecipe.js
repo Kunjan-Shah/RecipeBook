@@ -5,6 +5,7 @@ import Header from '../Header/Header'
 import { MdClose } from "react-icons/md"
 import axios from 'axios'
 import { useParams } from 'react-router-dom';
+import Loader from '../Loader/Loader'
 const BACKEND_BASE_URL = 'http://localhost:4000';
 
 export default function EditRecipe({user, setUser}) {
@@ -96,6 +97,7 @@ export default function EditRecipe({user, setUser}) {
         }
     }
     return (
+        userInput.itemName ?
         <>
         <div className="overlay-add-recipe"></div>
         <div className="main-page">
@@ -171,5 +173,7 @@ export default function EditRecipe({user, setUser}) {
             </div>
         </div>
         </>
+        :
+        <Loader />
     )
 }

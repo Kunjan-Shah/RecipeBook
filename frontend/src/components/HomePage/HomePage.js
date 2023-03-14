@@ -6,6 +6,7 @@ import SearchBar from '../SearchBar/SearchBar'
 import RecipeCarousel from '../RecipeCarousel/RecipeCarousel'
 import SearchResults from '../SearchResults/SearchResults'
 import { Link } from 'react-router-dom';
+import Loader from '../Loader/Loader'
 import axios from 'axios'
 const BACKEND_BASE_URL = 'http://localhost:4000';
 
@@ -70,6 +71,6 @@ export default function HomePage({user, setUser}) {
         </div>
         </>
         :
-        "Loading..."
+        <Loader />
     )
 }

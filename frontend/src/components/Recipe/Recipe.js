@@ -5,6 +5,7 @@ import ProfileAvatar from '../ProfileAvatar/ProfileAvatar'
 import '../../pages/MainPage.css'
 import { useParams } from 'react-router-dom';
 import axios from 'axios'
+import Loader from '../Loader/Loader'
 import { Link } from 'react-router-dom';
 
 const BACKEND_BASE_URL = 'http://localhost:4000';
@@ -165,6 +166,6 @@ export default function Recipe({user, setUser}) {
         </div>
         </>
         :
-        "Loading..."
+        <Loader />
     )
 }

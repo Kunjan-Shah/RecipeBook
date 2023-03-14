@@ -5,6 +5,7 @@ import Header from '../Header/Header'
 import RecipeCard from '../RecipeCard/RecipeCard'
 import axios from 'axios'
 import { Link } from 'react-router-dom';
+import Loader from '../Loader/Loader'
 const BACKEND_BASE_URL = 'http://localhost:4000';
 
 
@@ -61,6 +62,6 @@ export default function MyRecipe({user, setUser}) {
         </div>
         </>
         :
-        "Loading..."
+        <Loader />
     )
 }
