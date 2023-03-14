@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 
 
 export default function SearchResults({matchedRecipes}) {
-    console.log("No of recipes ", matchedRecipes.length)
     return (
         <div id="search-results">
             <div className="result-container">

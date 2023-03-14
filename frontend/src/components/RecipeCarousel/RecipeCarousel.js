@@ -3,7 +3,6 @@ import './RecipeCarousel.css'
 import RecipeCard from '../RecipeCard/RecipeCard'
 import axios from 'axios'
 import { Link } from 'react-router-dom';
-const BACKEND_BASE_URL = 'http://localhost:4000';
 
 
 export default function RecipeCarousel() {
@@ -11,13 +10,13 @@ export default function RecipeCarousel() {
     useEffect(() => {
         async function fetchTopRecipes() {
             try {
-                let recipesObj = await axios.get(BACKEND_BASE_URL + "/recipe/top")
+                let recipesObj = await axios.get("/recipe/top")
                 recipesObj = recipesObj.data
                 // fetch top 3 recipes
                 recipesObj = recipesObj.slice(0, 3)
                 setRecipeList(recipesObj)
             } catch(error) {
-                console.log(error)
+                console.err(error)
             }
         }
         fetchTopRecipes()

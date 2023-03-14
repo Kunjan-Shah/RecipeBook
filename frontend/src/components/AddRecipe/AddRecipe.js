@@ -4,7 +4,6 @@ import '../../pages/MainPage.css'
 import Header from '../Header/Header'
 import { MdClose } from "react-icons/md"
 import axios from 'axios'
-const BACKEND_BASE_URL = 'http://localhost:4000';
 
 export default function AddRecipe({user, setUser}) {
     const [userInput, setUserInput] = useState({
@@ -22,7 +21,7 @@ export default function AddRecipe({user, setUser}) {
 
     const handleSubmit = async (e) => {
         try{
-            const response = await axios.post(BACKEND_BASE_URL + '/recipe/add', {
+            const response = await axios.post('/recipe/add', {
                 imageUrl: imageSrc,
                 itemName: userInput.itemName,
                 description: userInput.description,
@@ -32,7 +31,7 @@ export default function AddRecipe({user, setUser}) {
             })
             alert(response.data)
         } catch(error) {
-            console.log(error)
+            console.err(error)
         }
     };
     const [tag, setTag] = useState({
@@ -68,7 +67,6 @@ export default function AddRecipe({user, setUser}) {
     const [imageSrc, setImageSrc] = useState()
     const uploadImage = (e) => {
         const file = e.target.files[0]
-        console.log("File size = ", file);
         if(file.size > 204800) {
             alert("Cannot upload image greater than 200KB")
             return;

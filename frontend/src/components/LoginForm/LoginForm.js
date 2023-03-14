@@ -5,7 +5,6 @@ import { useState } from "react";
 import md5 from "md5";
 import axios from 'axios'
 
-const BACKEND_BASE_URL = 'http://localhost:4000';
 
 export default function LoginForm({setUser}) {
     const [userInput, setUserInput] = useState({
@@ -23,7 +22,7 @@ export default function LoginForm({setUser}) {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post(BACKEND_BASE_URL + '/users/login', {
+            const response = await axios.post('/users/login', {
                 email: userInput.email,
                 pwdHash: md5(userInput.pwdHash),
             })
@@ -35,7 +34,7 @@ export default function LoginForm({setUser}) {
                 localStorage.setItem('user', JSON.stringify(response.data))
             }
         } catch(error) {
-            console.log(error);
+            console.err(error);
         }
     };
     return (

@@ -6,7 +6,6 @@ import { MdClose } from "react-icons/md"
 import axios from 'axios'
 import { useParams } from 'react-router-dom';
 import Loader from '../Loader/Loader'
-const BACKEND_BASE_URL = 'http://localhost:4000';
 
 export default function EditRecipe({user, setUser}) {
     const {id} = useParams();
@@ -18,13 +17,13 @@ export default function EditRecipe({user, setUser}) {
     useEffect(() => {
         async function fetchRecipe() {
             try {
-                let recipeObj = await axios.get(BACKEND_BASE_URL + `/recipe/${id}`)
+                let recipeObj = await axios.get(`/recipe/${id}`)
                 recipeObj = recipeObj.data
                 setUserInput({itemName: recipeObj.itemName, description: recipeObj.description, steps: recipeObj.steps})
                 setTagList(recipeObj.ingredients)
                 setImageSrc(recipeObj.imageUrl)
             } catch(error) {
-                console.log(error)
+                console.err(error)
             }
         }
         fetchRecipe()
@@ -39,7 +38,7 @@ export default function EditRecipe({user, setUser}) {
 
     const handleSubmit = async (e) => {
         try{
-            const response = await axios.post(BACKEND_BASE_URL + '/recipe/update', {
+            const response = await axios.post('/recipe/update', {
                 recipeId: id,
                 imageUrl: imageSrc,
                 itemName: userInput.itemName,
@@ -49,7 +48,7 @@ export default function EditRecipe({user, setUser}) {
             })
             alert(response.data)
         } catch(error) {
-            console.log(error)
+            console.err(error)
         }
     };
     const [tag, setTag] = useState({
@@ -85,7 +84,6 @@ export default function EditRecipe({user, setUser}) {
     const [imageSrc, setImageSrc] = useState()
     const uploadImage = (e) => {
         const file = e.target.files[0]
-        console.log("File size = ", file);
         if(file.size > 204800) {
             alert("Cannot upload image greater than 200KB")
             return;
