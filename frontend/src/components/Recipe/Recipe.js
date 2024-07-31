@@ -8,6 +8,7 @@ import axios from 'axios'
 import Loader from '../Loader/Loader'
 import { Link } from 'react-router-dom';
 
+const BACKEND_URL = "https://recipebook-backend-nu2n.onrender.com"
 
 
 function capitalizeFirstLetter(string) {
@@ -20,7 +21,7 @@ export default function Recipe({user, setUser}) {
     useEffect(() => {
         async function fetchRecipe() {
             try {
-                let recipeObj = await axios.get(`/recipe/${id}`)
+                let recipeObj = await axios.get(BACKEND_URL + `/recipe/${id}`)
                 recipeObj = recipeObj.data
                 setRecipe(recipeObj)
             } catch(error) {
@@ -36,7 +37,7 @@ export default function Recipe({user, setUser}) {
 
     async function updateVotes(voteStatus) {
         try {
-            await axios.post("/recipe/update-votes", {
+            await axios.post(BACKEND_URL + "/recipe/update-votes", {
                 voteStatus: voteStatus,
                 recipeId: recipe._id
             })
@@ -73,7 +74,7 @@ export default function Recipe({user, setUser}) {
 
     async function deleteRecipe() {
         try {
-            await axios.post("/recipe/delete", {
+            await axios.post(BACKEND_URL + "/recipe/delete", {
                 id: recipe._id
             })
         } catch(error) {

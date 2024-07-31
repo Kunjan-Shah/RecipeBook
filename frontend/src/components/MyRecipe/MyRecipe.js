@@ -7,13 +7,14 @@ import axios from 'axios'
 import { Link } from 'react-router-dom';
 import Loader from '../Loader/Loader'
 
+const BACKEND_URL = "https://recipebook-backend-nu2n.onrender.com"
 
 export default function MyRecipe({user, setUser}) {
     const [myRecipes, setMyRecipes] = useState()
     useEffect(() => {
         async function fetchData() {
             try {
-                let myRecipesObj = await axios.get('/recipe/my-recipes', {
+                let myRecipesObj = await axios.get(BACKEND_URL + '/recipe/my-recipes', {
                     params: {
                         user: user
                     }

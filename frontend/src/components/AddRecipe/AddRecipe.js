@@ -5,6 +5,8 @@ import Header from '../Header/Header'
 import { MdClose } from "react-icons/md"
 import axios from 'axios'
 
+const BACKEND_URL = "https://recipebook-backend-nu2n.onrender.com"
+
 export default function AddRecipe({user, setUser}) {
     const [userInput, setUserInput] = useState({
         itemName: "",
@@ -21,7 +23,7 @@ export default function AddRecipe({user, setUser}) {
 
     const handleSubmit = async (e) => {
         try{
-            const response = await axios.post('/recipe/add', {
+            const response = await axios.post(BACKEND_URL + '/recipe/add', {
                 imageUrl: imageSrc,
                 itemName: userInput.itemName,
                 description: userInput.description,

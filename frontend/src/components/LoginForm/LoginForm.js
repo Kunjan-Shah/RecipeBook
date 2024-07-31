@@ -5,6 +5,7 @@ import { useState } from "react";
 import md5 from "md5";
 import axios from 'axios'
 
+const BACKEND_URL = "https://recipebook-backend-nu2n.onrender.com"
 
 export default function LoginForm({setUser}) {
     const [userInput, setUserInput] = useState({
@@ -22,7 +23,7 @@ export default function LoginForm({setUser}) {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('/users/login', {
+            const response = await axios.post(BACKEND_URL + '/users/login', {
                 email: userInput.email,
                 pwdHash: md5(userInput.pwdHash),
             })
