@@ -1,6 +1,6 @@
 const express = require("express");
 const recipeRouter = express.Router();
-const Recipe = require("../backend/models/recipe");
+const Recipe = require("../models/recipe");
 const axios = require("axios")
 
 // create recipe
