@@ -5,9 +5,9 @@ import ProfileAvatar from '../ProfileAvatar/ProfileAvatar'
 import '../../pages/MainPage.css'
 import { useParams } from 'react-router-dom';
 import axios from 'axios'
+import Loader from '../Loader/Loader'
 import { Link } from 'react-router-dom';
 
-const BACKEND_BASE_URL = 'http://localhost:4000';
 
 
 function capitalizeFirstLetter(string) {
@@ -20,7 +20,7 @@ export default function Recipe({user, setUser}) {
     useEffect(() => {
         async function fetchRecipe() {
             try {
-                let recipeObj = await axios.get(BACKEND_BASE_URL + `/recipe/${id}`)
+                let recipeObj = await axios.get(`/recipe/${id}`)
                 recipeObj = recipeObj.data
                 setRecipe(recipeObj)
             } catch(error) {
@@ -36,7 +36,7 @@ export default function Recipe({user, setUser}) {
 
     async function updateVotes(voteStatus) {
         try {
-            await axios.post(BACKEND_BASE_URL + "/recipe/update-votes", {
+            await axios.post("/recipe/update-votes", {
                 voteStatus: voteStatus,
                 recipeId: recipe._id
             })
@@ -73,7 +73,7 @@ export default function Recipe({user, setUser}) {
 
     async function deleteRecipe() {
         try {
-            await axios.post(BACKEND_BASE_URL + "/recipe/delete", {
+            await axios.post("/recipe/delete", {
                 id: recipe._id
             })
         } catch(error) {
@@ -165,6 +165,6 @@ export default function Recipe({user, setUser}) {
         </div>
         </>
         :
-        "Loading..."
+        <Loader />
     )
 }

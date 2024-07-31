@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import Autocomplete from '@mui/material/Autocomplete';
 import './SearchBar.css'
 import axios from 'axios'
-const BACKEND_BASE_URL = 'http://localhost:4000';
-
 
 export default function SearchBar({searchList, setMatchedRecipes}) {
   const [value, setValue] = useState();
@@ -13,7 +11,7 @@ export default function SearchBar({searchList, setMatchedRecipes}) {
     if(e.key === "Enter") {
         try {
             setInputValue('')
-            let matchedRecipeObj = await axios.get(BACKEND_BASE_URL + '/recipe/search', {
+            let matchedRecipeObj = await axios.get('/recipe/search', {
                 params: {
                     itemName: inputValue
                 }

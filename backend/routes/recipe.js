@@ -1,6 +1,6 @@
 const express = require("express");
 const recipeRouter = express.Router();
-const Recipe = require("../models/recipe");
+const Recipe = require("../backend/models/recipe");
 const axios = require("axios")
 
 // create recipe
@@ -22,6 +22,7 @@ recipeRouter.post("/add", async (req, res) => {
     })
     try {
         await recipe.save();
+        console.log(recipe)
         res.status(201).send("Recipe added successfully");
     } catch (error) {
         console.log(error)

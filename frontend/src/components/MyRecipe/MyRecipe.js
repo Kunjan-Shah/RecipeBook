@@ -5,7 +5,7 @@ import Header from '../Header/Header'
 import RecipeCard from '../RecipeCard/RecipeCard'
 import axios from 'axios'
 import { Link } from 'react-router-dom';
-const BACKEND_BASE_URL = 'http://localhost:4000';
+import Loader from '../Loader/Loader'
 
 
 export default function MyRecipe({user, setUser}) {
@@ -13,7 +13,7 @@ export default function MyRecipe({user, setUser}) {
     useEffect(() => {
         async function fetchData() {
             try {
-                let myRecipesObj = await axios.get(BACKEND_BASE_URL + '/recipe/my-recipes', {
+                let myRecipesObj = await axios.get('/recipe/my-recipes', {
                     params: {
                         user: user
                     }
@@ -61,6 +61,6 @@ export default function MyRecipe({user, setUser}) {
         </div>
         </>
         :
-        "Loading..."
+        <Loader />
     )
 }

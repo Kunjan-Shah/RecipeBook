@@ -1,6 +1,6 @@
 const express = require("express");
 const userRouter = express.Router();
-const User = require("../models/user");
+const User = require("../backend/models/user");
 
 // create user
 userRouter.post("/signup", async (req, res) => {

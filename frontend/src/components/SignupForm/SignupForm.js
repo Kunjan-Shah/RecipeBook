@@ -5,8 +5,6 @@ import { useState } from "react";
 import md5 from "md5";
 import axios from 'axios'
 
-const BACKEND_BASE_URL = 'http://localhost:4000';
-
 export default function SignupForm({setUser}) {
     const [userInput, setUserInput] = useState({
         name: "",
@@ -29,7 +27,7 @@ export default function SignupForm({setUser}) {
         }
         else {
             try {
-                const response = await axios.post(BACKEND_BASE_URL + '/users/signup', {
+                const response = await axios.post('/users/signup', {
                     name: userInput.name,
                     email: userInput.email,
                     pwdHash: md5(userInput.pwdHash),

@@ -6,8 +6,8 @@ import SearchBar from '../SearchBar/SearchBar'
 import RecipeCarousel from '../RecipeCarousel/RecipeCarousel'
 import SearchResults from '../SearchResults/SearchResults'
 import { Link } from 'react-router-dom';
+import Loader from '../Loader/Loader'
 import axios from 'axios'
-const BACKEND_BASE_URL = 'http://localhost:4000';
 
 
 export default function HomePage({user, setUser}) {
@@ -16,7 +16,7 @@ export default function HomePage({user, setUser}) {
         async function fetchAllIngredients() {
             try {
                 let masterSearchList = []
-                let recipesObj = await axios.get(BACKEND_BASE_URL + "/recipe/all")
+                let recipesObj = await axios.get("/recipe/all")
                 recipesObj = recipesObj.data
                 for(let i = 0; i < recipesObj.length; i++) {
                     masterSearchList.push(recipesObj[i].itemName)
@@ -70,6 +70,6 @@ export default function HomePage({user, setUser}) {
         </div>
         </>
         :
-        "Loading..."
+        <Loader />
     )
 }
