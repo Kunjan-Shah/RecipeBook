@@ -3,6 +3,8 @@ import Autocomplete from '@mui/material/Autocomplete';
 import './SearchBar.css'
 import axios from 'axios'
 
+const BACKEND_URL = "https://recipebook-backend-nu2n.onrender.com"
+
 export default function SearchBar({searchList, setMatchedRecipes}) {
   const [value, setValue] = useState();
   const [inputValue, setInputValue] = useState('');
@@ -11,7 +13,7 @@ export default function SearchBar({searchList, setMatchedRecipes}) {
     if(e.key === "Enter") {
         try {
             setInputValue('')
-            let matchedRecipeObj = await axios.get('/recipe/search', {
+            let matchedRecipeObj = await axios.get(BACKEND_URL + '/recipe/search', {
                 params: {
                     itemName: inputValue
                 }

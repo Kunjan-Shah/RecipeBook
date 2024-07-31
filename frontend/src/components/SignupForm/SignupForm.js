@@ -5,6 +5,9 @@ import { useState } from "react";
 import md5 from "md5";
 import axios from 'axios'
 
+const BACKEND_URL = "https://recipebook-backend-nu2n.onrender.com"
+
+
 export default function SignupForm({setUser}) {
     const [userInput, setUserInput] = useState({
         name: "",
@@ -27,7 +30,7 @@ export default function SignupForm({setUser}) {
         }
         else {
             try {
-                const response = await axios.post('/users/signup', {
+                const response = await axios.post(BACKEND_URL + '/users/signup', {
                     name: userInput.name,
                     email: userInput.email,
                     pwdHash: md5(userInput.pwdHash),

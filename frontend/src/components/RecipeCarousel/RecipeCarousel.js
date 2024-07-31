@@ -4,13 +4,15 @@ import RecipeCard from '../RecipeCard/RecipeCard'
 import axios from 'axios'
 import { Link } from 'react-router-dom';
 
+const BACKEND_URL = "https://recipebook-backend-nu2n.onrender.com"
+
 
 export default function RecipeCarousel() {
     const [recipeList, setRecipeList] = useState();
     useEffect(() => {
         async function fetchTopRecipes() {
             try {
-                let recipesObj = await axios.get("/recipe/top")
+                let recipesObj = await axios.get(BACKEND_URL + "/recipe/top")
                 recipesObj = recipesObj.data
                 // fetch top 3 recipes
                 recipesObj = recipesObj.slice(0, 3)

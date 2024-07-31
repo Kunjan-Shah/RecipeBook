@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 import Loader from '../Loader/Loader'
 import axios from 'axios'
 
+const BACKEND_URL = "https://recipebook-backend-nu2n.onrender.com"
 
 export default function HomePage({user, setUser}) {
     const [searchList, setSearchList] = useState();
@@ -16,7 +17,7 @@ export default function HomePage({user, setUser}) {
         async function fetchAllIngredients() {
             try {
                 let masterSearchList = []
-                let recipesObj = await axios.get("/recipe/all")
+                let recipesObj = await axios.get(BACKEND_URL + "/recipe/all")
                 recipesObj = recipesObj.data
                 for(let i = 0; i < recipesObj.length; i++) {
                     masterSearchList.push(recipesObj[i].itemName)

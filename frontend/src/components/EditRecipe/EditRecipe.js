@@ -7,6 +7,8 @@ import axios from 'axios'
 import { useParams } from 'react-router-dom';
 import Loader from '../Loader/Loader'
 
+const BACKEND_URL = "https://recipebook-backend-nu2n.onrender.com"
+
 export default function EditRecipe({user, setUser}) {
     const {id} = useParams();
     const [userInput, setUserInput] = useState({
@@ -17,7 +19,7 @@ export default function EditRecipe({user, setUser}) {
     useEffect(() => {
         async function fetchRecipe() {
             try {
-                let recipeObj = await axios.get(`/recipe/${id}`)
+                let recipeObj = await axios.get(BACKEND_URL + `/recipe/${id}`)
                 recipeObj = recipeObj.data
                 setUserInput({itemName: recipeObj.itemName, description: recipeObj.description, steps: recipeObj.steps})
                 setTagList(recipeObj.ingredients)
@@ -38,7 +40,7 @@ export default function EditRecipe({user, setUser}) {
 
     const handleSubmit = async (e) => {
         try{
-            const response = await axios.post('/recipe/update', {
+            const response = await axios.post(BACKEND_URL + '/recipe/update', {
                 recipeId: id,
                 imageUrl: imageSrc,
                 itemName: userInput.itemName,
