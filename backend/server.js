@@ -12,7 +12,7 @@ const recipeRouter = require("./routes/recipe");
 
 require("./mongo-connect")
 
-const PORT = 4000;
+const PORT = process.env.PORT || 8000;
 app.use(cors())
 app.use(express.json({limit: '10mb'}));
 app.use(express.urlencoded({limit: '10mb'}));
@@ -30,6 +30,6 @@ app.get("*", function(_, res) {
     )
 }) 
 
-server.listen(process.env.PORT || PORT, function () {
+server.listen(PORT, function () {
     console.log("Server is running on Port: " + PORT);
 });
