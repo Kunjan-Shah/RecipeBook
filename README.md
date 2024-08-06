@@ -21,6 +21,8 @@ node server.js
 
 Note: GIF might be blurred
 
+Website is hosted at: https://recipebook-kmj4.onrender.com/
+
 Future development:
 1. Support image upload
 2. Improve UI/UX
